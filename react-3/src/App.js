@@ -4,14 +4,14 @@ import './reset.css'
 import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
+import * as localStore from './localStore'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       newTodo: '',
-      todoList: [
-      ]
+      todoList: localStore.load('todoList') || []
     }
   }
   render() {
@@ -35,11 +35,14 @@ class App extends Component {
             onChange={this.changeTitle.bind(this)}
             onSubmit={this.addTodo.bind(this)} />
         </div>
-        <ol>
+        <ol className="todoList">
           {todos}
         </ol>
       </div>
     )
+  }
+  componentDidUpdate() {
+    localStore.save('todoList', this.state.todoList)
   }
   toggle(e, todo) {
     todo.status = todo.status === 'completed' ? '' : 'completed'
@@ -74,6 +77,6 @@ export default App;
 let id = 0
 
 function idMaker() {
-  id = 1
+  id += 1
   return id
 }
