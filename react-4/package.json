@@ -1,5 +1,6 @@
 {
-  "name": "webpack-demo",
+  "homepage": "https://gaozhidong.github.io/react/react-4/build/",
+  "name": "react-4",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +17,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "homepage": "https://clark124.github.io/react-1/build"
+  }
+  
 }
