@@ -7,8 +7,6 @@ import './reset.css';
 import UserDialog from './UserDialog'
 import { getCurrentUser, signOut } from './leanCloud'
 import AV from './leanCloud'
-import jsonObj from './jsonObj'
-
 
 
 class App extends Component {
@@ -67,7 +65,7 @@ class App extends Component {
 				.then((todos) => {
 					let avAlltodos = todos[0]//因为理论上AllTodos只有一个，所有我们取结果的第一项
 					let id = avAlltodos.id
-					let stateCopy = jsonObj(this.state)
+					let stateCopy = JSON.parse(JSON.stringify(this.state))
 					stateCopy.todoList = JSON.parse(avAlltodos.attributes.content)//为什么有个attributes？因为从控制台看到的
 					stateCopy.todoList.id = id //为什么给todoList这个数组设置id？因为数组也是对象
 					this.setState(stateCopy)
@@ -96,7 +94,7 @@ class App extends Component {
 		avTodos.set('content', dataString);
 		avTodos.setACL(acl)//设置访问控制
 		avTodos.save().then((todo) => {
-			let stateCopy = jsonObj(this.state)
+			let stateCopy = JSON.parse(JSON.stringify(this.state))
 			stateCopy.todoList.id = todo.id //一定记得要把id挂到this.todoList上，否测下次就会调用updateTodos了
 			this.setState(stateCopy)
 			console.log('保存成功');
@@ -115,13 +113,13 @@ class App extends Component {
 
 	signOut() {
 		signOut()
-		let stateCopy = jsonObj(this.state)
+		let stateCopy = JSON.parse(JSON.stringify(this.state))
 		stateCopy.user = {}
 		this.setState(stateCopy)
 	}
 
 	onSignUpOrOnSignIn(user) {
-		let stateCopy = jsonObj(this.state)
+		let stateCopy = JSON.parse(JSON.stringify(this.state))
 		stateCopy.user = user
 		stateCopy.currentUser = getCurrentUser();
 		this.setState(stateCopy)
