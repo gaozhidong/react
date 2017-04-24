@@ -1,8 +1,8 @@
-.todo {
+.App {
   color: #333;
   border: 1px solid #aaa;
   border-radius: 4px;
-  background: white;
+  background: #fff;
   margin: 2em;
   padding: 0 1em;
   min-height: 20em;
@@ -10,16 +10,28 @@
   box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
 }
 
-.todo>.todoList>li:nth-child(odd){
-  background: #eee;
+.App .header {
+  display: flex;
+  align-items: center;
 }
-.todo>.todoList>li:nth-child(even){
+
+.App .header .logout {
+  width: 5em;
+  height: 2.5em;
+  border-radius: 2em;
+  background: #eee;
+  margin-left: 5em;
+}
+
+.App .inputWrapper {
+  width: 32em;
+  height: 4em;
   background: transparent;
 }
-.todo>h1>button{
-  padding: 3px 5px;
-  float: right;
-  border-right: 3px;
+
+.App > .todoList > li:nth-child(odd){
+  background: #eee;
 }
-
-
+.App > .todoList > li:nth-child(even){
+  background: transparent;
+}
