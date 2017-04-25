@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './login.css';
 import { signUp, signIn } from './leanCloud'
+import errorInfo from './error'
+
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -29,20 +31,7 @@ class Login extends Component {
             this.props.onSignUp.call(null, user)
         }
         let error = (error) => {
-            switch (error.code) {
-                case 100:
-                    alert('网络故障')
-                    break
-                case 202:
-                    alert('用户名已被占用')
-                    break
-                case 502:
-                    alert('服务器维护中')
-                    break
-                default:
-                    alert(error)
-                    break
-            }
+            errorInfo(error)
         }
         signUp(username, password, success, error)
     }
@@ -58,37 +47,12 @@ class Login extends Component {
             this.props.onSignIn.call(null, user)
         }
         let error = (error) => {
-            console.log(error.code)
-            switch (error.code) {
-                case 100:
-                    alert('网络故障')
-                    break
-                case 210:
-                    alert('用户名与密码不匹配')
-                    break
-                case 211:
-                    alert('找不到用户')
-                    break
-                case 502:
-                    alert('服务器维护中')
-                    break
-                default:
-                    alert(error)
-                    break
-            }
+            //console.log(error.code)
+            errorInfo(error)
         }
         signIn(username, password, success, error)
     }
-    // changeUsername(e) {
-    //     let stateCopy = JSON.parse(JSON.stringify(this.state))  // 用 JSON 深拷贝
-    //     stateCopy.formData.username = e.target.value
-    //     this.setState(stateCopy)
-    // }
-    // changePassword(e) {
-    //     let stateCopy = JSON.parse(JSON.stringify(this.state))  // 用 JSON 深拷贝
-    //     stateCopy.formData.password = e.target.value
-    //     this.setState(stateCopy)
-    // }
+
     changeFormData(key, e) {
         let stateCopy = JSON.parse(JSON.stringify(this.state))  // 用 JSON 深拷贝
         stateCopy.formData[key] = e.target.value
