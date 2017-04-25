@@ -1,8 +1,7 @@
-body {
-  background: #ddd;
+body{
+   background: #fff;
 }
-
-#root {
+#root{
   display: flex;
   justify-content: center;
   min-height: 100vh;

@@ -2,36 +2,81 @@
   color: #333;
   border: 1px solid #aaa;
   border-radius: 4px;
-  background: #fff;
   margin: 2em;
-  padding: 0 1em;
-  min-height: 20em;
+  min-height: 10em;
   min-width: 32em;
   box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
+  text-align: center;
+  width: 30em;
+  /*height: 20em;*/
 }
-
-.App .header {
+.App h1{
+  margin: 0;
+  padding: 1em;
+  border-bottom : 1px solid #aaa;
+}
+.App h1 button{
+  color: #fff;
+  margin-left: 20px;
+  cursor: pointer;
+  border: none;
+  background: red;
+  width: 60px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 30px;
+  border-radius: 4px;
+}
+.App h1 button:hover{
+  opacity: 0.6;
+  
+}
+.inputWrapper{
+  border-bottom : 1px solid #aaa;
+}
+.inputWrapper .TodoInput{
+    display: block;
+    width: 20em;
+    margin: 20px auto;
+    font-size: 1.25em;
+    height: 2em;
+}
+.todoList{
+  margin: 30px 0;
   display: flex;
+  flex-direction:column;
   align-items: center;
 }
-
-.App .header .logout {
-  width: 5em;
-  height: 2.5em;
-  border-radius: 2em;
-  background: #eee;
-  margin-left: 5em;
+.todoList li{
+  border: 1px solid #aaa;
+  width: 20em;
+  padding: 10px;
+  margin:5px;
 }
-
-.App .inputWrapper {
-  width: 32em;
-  height: 4em;
-  background: transparent;
+.todoList li div::after{
+  content: "";
+  display: block;
+  clear: both;
 }
-
-.App > .todoList > li:nth-child(odd){
-  background: #eee;
+.todoList li input{
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  cursor: pointer;
 }
-.App > .todoList > li:nth-child(even){
-  background: transparent;
+.todoList li span{
+  float: left;
+  line-height: 30px;
+ margin-left: 30px;
+}
+.todoList li button{
+  float: right;
+  padding:3px;
+  border: 2px dashed #343;
+  border-radius: 4px;
+  background: #fff;
+  color:red;
+  cursor: pointer;
+  font-weight: 900;
 }
