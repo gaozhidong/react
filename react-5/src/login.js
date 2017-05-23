@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './login.css';
-import { signUp, signIn } from './leanCloud'
+import { signUp, signIn, sendPasswordResetEmail } from './leanCloud'
 import errorInfo from './error'
 
 class Login extends Component {
@@ -153,8 +153,10 @@ class Login extends Component {
         stateCopy.selectedTab = 'forgotPassword'
         this.setState(stateCopy)
     }
-    resetPassword() {
-
+    resetPassword(e) {
+        e.preventDefault()
+        sendPasswordResetEmail(this.state.formData.email)
     }
+
 }
 export default Login
