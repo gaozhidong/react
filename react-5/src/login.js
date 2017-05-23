@@ -9,6 +9,7 @@ class Login extends Component {
         this.state = {
             selected: 'signUp',
             formData: {
+                email: '',
                 username: '',
                 password: '',
             }
@@ -25,7 +26,7 @@ class Login extends Component {
             return
         }
         e.preventDefault()
-        let {username, password} = this.state.formData
+        let { email, username, password } = this.state.formData
         let success = (user) => {
             // console.log(success)
             this.props.onSignUp.call(null, user)
@@ -33,15 +34,15 @@ class Login extends Component {
         let error = (error) => {
             errorInfo(error)
         }
-        signUp(username, password, success, error)
+        signUp(email, username, password, success, error)
     }
     signIn(e) {
-        if (!this.state.formData.username||!this.state.formData.password) {
+        if (!this.state.formData.username || !this.state.formData.password) {
             alert('请输入用户名或密码')
             return
         }
         e.preventDefault()
-        let {username, password} = this.state.formData
+        let { username, password } = this.state.formData
         let success = (user) => {
             // console.log(success)
             this.props.onSignIn.call(null, user)
@@ -61,6 +62,12 @@ class Login extends Component {
     render() {
         let signUpForm = (
             <form className="signUp" onSubmit={this.signUp.bind(this)}> {/* 注册*/}
+                <div className="row">
+                    <label>邮箱</label>
+                    <input type="text" value={this.state.formData.email}
+                        onChange={this.changeFormData.bind(this, 'email')} />
+
+                </div>
                 <div className="row">
                     <label>用户名</label>
                     <input type="text" value={this.state.formData.username}
