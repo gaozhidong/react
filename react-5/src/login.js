@@ -3,7 +3,8 @@ import './login.css';
 import { signUp, signIn, sendPasswordResetEmail } from './leanCloud'
 import errorInfo from './error'
 import SignUpForm from './SignUpForm' //将 SignUpForm 抽离成一个组件
-import SignInForm from './SignInForm' //SignInForm 抽离成一个组件
+import SignInForm from './SignInForm' //将SignInForm 抽离成一个组件
+import ForgotPasswordForm from './ForgotPasswordForm' //将忘记密码表单抽离成一个组件
 
 class Login extends Component {
     constructor(props) {
@@ -97,28 +98,18 @@ class Login extends Component {
                 </div>
             </div>
         )
-        let forgotPassword = (
-            <div className="forgotPassword">
-                <h3>
-                    重置密码
-        </h3>
-                <form className="forgotPassword" onSubmit={this.resetPassword.bind(this)}> {/* 登录*/}
-                    <div className="row">
-                        <label>邮箱</label>
-                        <input type="text" value={this.state.formData.email}
-                            onChange={this.changeFormData.bind(this, 'email')} />
-                    </div>
-                    <div className="row actions">
-                        <button type="submit">发送重置邮件</button>
-                        <a href="#" onClick={this.returnToSignIn.bind(this)}>返回登录</a>
-                    </div>
-                </form>
-            </div>
-        )
+
         return (
             <div className="login">
                 <div className="UserDialog">
-                    {this.state.selectedTab === 'signInOrSignUp' ? signInOrSignUp : forgotPassword}
+                    {this.state.selectedTab === 'signInOrSignUp' ?
+                        signInOrSignUp :
+                        <ForgotPasswordForm
+                            formData={this.state.formData}
+                            onSubmit={this.resetPassword.bind(this)}
+                            onChange={this.changeFormData.bind(this)}
+                            onSignIn={this.returnToSignIn.bind(this)}
+                        />}
 
                 </div>
             </div>
