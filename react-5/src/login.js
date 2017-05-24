@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './login.css';
 import { signUp, signIn, sendPasswordResetEmail } from './leanCloud'
 import errorInfo from './error'
-import SignUpForm from './SignUpForm'
+import SignUpForm from './SignUpForm' //将 SignUpForm 抽离成一个组件
+import SignInForm from './SignInForm' //SignInForm 抽离成一个组件
 
 class Login extends Component {
     constructor(props) {
@@ -63,24 +64,6 @@ class Login extends Component {
     }
     render() {
 
-        let signInForm = (
-            <form className="signIn" onSubmit={this.signIn.bind(this)}> {/* 登录*/}
-                <div className="row">
-                    <label>用户名</label>
-                    <input type="text" value={this.state.formData.username}
-                        onChange={this.changeFormData.bind(this, 'username')} />
-                </div>
-                <div className="row">
-                    <label>密码</label>
-                    <input type="password" value={this.state.formData.password}
-                        onChange={this.changeFormData.bind(this, 'password')} />
-                </div>
-                <div className="row actions">
-                    <button type="submit">登录</button>
-                    <a href="#" onClick={this.showForgotPassword.bind(this)}>忘记密码了？</a>
-                </div>
-            </form>
-        )
         let signInOrSignUp = (
             <div className="signInOrSignUp">
                 <nav>
@@ -100,9 +83,17 @@ class Login extends Component {
                     {this.state.selected === 'signUp' ?
                         <SignUpForm formData={this.state.formData}
                             onSubmit={this.signUp.bind(this)}
-                            onChange={this.changeFormData.bind(this)} />
+                            onChange={this.changeFormData.bind(this)}
+                        />
                         : null}
-                    {this.state.selected === 'signIn' ? signInForm : null}
+                    {this.state.selected === 'signIn' ?
+                        <SignInForm formData={this.state.formData}
+                            onChange={this.changeFormData.bind(this)}
+                            onSubmit={this.signIn.bind(this)}
+                            onForgotPassword={this.showForgotPassword.bind(this)}
+                        />
+                        : null}
+
                 </div>
             </div>
         )
