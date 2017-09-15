@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .disnone{
+      display: none;
+    }
+  </style>
+
+
+</head>
+<body>
+  <div id="time"></div>
+  <div id="content" class="disnone">拼图开始了</div>
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script >
+var c=0;
+function showLogin()
+{
+  c++;
+  console.log(c)
+  if(c ===1){
+    $('#time').html('3')
+  }else if(c===2){
+    $('#time').html('2')
+  }else if(c===3){
+    $('#time').html('1')
+  }else if(c===4){
+    $('#time').html('go')
+  }else{
+    $('#time').css('display','none')
+    $('#content').css('display','block')
+    clearTimeout(time)
+  }
+  
+}
+var time = setInterval("showLogin()","1000");
+</script>
+  </script> 
+</body>
+</html>

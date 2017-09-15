@@ -4,25 +4,30 @@
 	<title>拼图抽奖</title>
 	<meta name="viewport" content="width=800,user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 	<link rel="stylesheet" href="index.css">
 </head>
 
 <body>
 <!-- 倒计时 -->
-<div id="time" style="position:relative">
+<!-- <div id="time" style="position:relative">
 	<div id="time_1" class="tag"></div>
 	<div id="time_2" class="tag"></div>
 	<div id="time_3" class="tag"></div>
 	<div id="time_4" class="tag"></div>
-</div> 
+</div> -->
 	<div class="container">
+		<div class="rule">活动规则</div>
+		<div class="rule-content">
+			<div class="rule-con-close"></div>
+		</div>
 	<!-- 	<a class="usage" href="usage.html"></a> -->
 		<div class="pt">
 			<div id="pt-boz">
 				<div id="pt-box"></div>
 			</div>
 		</div>
-		<div class="bt" style="display:none;">
+		<div class="bt" >
 			<div class="bt-again">重新开始</div>
 			<div class="bt-start">开始游戏</div>
 		</div>
@@ -30,20 +35,25 @@
 		<div id="cabinet">
 			<div id="guider"></div>
 			<div id="dialog" style="display: none;">
-				<div class="dl-msg">
-					<div class="dl-txt">挑战成功, 用时38秒<br/>恭喜您获得一张30元代金券</div>
-				</div>
 				<div class="dl-bts">
-					<div class="bt-fn0">领取奖励</div>
-					<div class="bt-fn1">炫耀一下</div>
+					<div class="bt-fn_count"></div>
+					<div class="bt-fn0"></div>
+					<div class="bt-fn1"></div>
+					<div class="gift_box">查看礼包</div>
 				</div>
+				<div class="dl-bts-2">
+						<div class="bt-fn_count-2"></div>
+						<div class="bt-fn0-2"></div>
+						<div class="bt-fn1-2"></div>
+						<div class="gift_box-2">查看礼包</div>
+					</div>
 			</div>
 		</div>
+		<div id="count"></div>
 	</div>
-	<script src="https://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-	<script src="loading.js"></script>
-	<script src="index.js"></script>
-	<script  src="index2.js"></script>
+	
+	<script type="text/javascript" src="index.js"></script>
+	<script type="text/javascript" src="index2.js"></script>
 	<script>
 //倒计时
 		var c = 1;
@@ -80,6 +90,14 @@
 
 		}
 		var time = setInterval("showLogin()", "1000"); 
+		$(".rule").click(function(){
+			$("#overlay").show();
+			$(".rule-content").css('display','block');
+		})
+		$(".rule-con-close").click(function(){
+			$("#overlay").hide();
+			$(".rule-content").css('display','none');
+		})
 	</script>
 </body>
 

@@ -66,6 +66,9 @@
                
                 if (that.data("hsPintuStatus") === 0) {
                      Nstep++;//每次点击加一
+                     var count_text = `步数${Nstep}`
+                     $('#count').text(count_text)
+                     $("#dialog .bt-fn_count").text(count_text);
                     var cols = that.data("cols");
                     var rows = that.data("rows");
                     var hole = that.children(".pt-pix");
